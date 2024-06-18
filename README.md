@@ -48,3 +48,55 @@
     <p>-> Afterwards, mycreds.txt is generated & reused for subsequent invokations.</p>
 <h4>3) value for public_folder_id variable in upload.py</h4>
     <p>-> This is used to upload to a specific Google Drive folder. Set up for this publicly accessible folder should be done prior to running screengrab.py (& by extension, upload.py)</p>
+
+
+---
+
+<h3>Integrate Google Cloud CLI with Docker</h3>
+<h4>1) gcloud init</h4>
+<p>--> Log into gcloud using CLI: User Authentication will be done through browser</p>
+<h4>2) Select appropriate gcloud project</h4>
+<p>--> (Optional) It might be necessary to configure a default Compute Region and Zone that corresponds to that of the project's Artifact Registry</p>
+<h4>3) Configure Docker with the credentials for the same Compute Region and Zone</h4>
+<p>--> Sample code</p>
+
+```
+gcloud auth configure-docker us-central1-docker.pkg.dev
+```
+
+<p>--> Sample output</p>
+
+```json
+ {
+  "credHelpers": {
+    "us-central1-docker.pkg.dev": "gcloud"
+  }
+}
+```
+
+<h4>4) Build the Docker image</h4>
+<p>Sample code below is for MacOS with M1 chip & above</p>
+
+```
+docker buildx build --platform linux/amd64 -t imgName .
+```
+
+<h4>5) Tag the Docker image</h4>
+
+```
+docker tag imgName us-central1-docker.pkg.dev/cloudProjName/artifactRegistry/imgName
+```
+
+<p><b>imgName</b> should correspond to the one above in Step 4</p>
+<p><b>cloudProjName</b> is determined when creating the project in Google Cloud Console</p>
+<p><b>artifactRegistry</b> is determined when creating the Artifact Registry in Google Cloud Console</p>
+
+<p>The naming convention is used to push the Docker image to the intended directory in Artifact Registry</p>
+
+<h4>6) Push the Docker image</h4>
+
+```
+docker push us-central1-docker.pkg.dev/cloudProjName/artifactRegistry/imgName
+```
+
+---
