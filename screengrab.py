@@ -38,7 +38,7 @@ time.sleep(11)
 
 #To circumvent cookie. Make changes based on target website
 try:
-    driver.find_element_by_css_selector('#L2AGLb').click()
+    # driver.find_element_by_css_selector('#L2AGLb').click()
     
     #Add additional stages if necessary for various cookie consent forms
     print("Circumvented cookie consent stage 1")
