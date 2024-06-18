@@ -10,18 +10,39 @@
 
 ---
 
+<h2>On first run:</h2>
+<h4>1) pip install virtual environment</h4>
+
+`pip install virtualenv`
+
+<h4>2) Set up virtual environment in project</h4>
+
+`python<version> -m venv <virtual-environment-name>`
+
+<h4>3) Activate virtual environment</h4>
+<h4>4) Navigate to main directory and install from requirements.txt</h4>
+
+`pip install -r requirements.txt`
+
+---
+
 <h3>Note that you should supply your own credentials & values for the following:</h3>
 <h4>1) client_secrets.json</h4>
     <p>-> This is a preparation step to link the above 'service' to a Cloud Service provider. Sample format shown below is for Google Cloud project</p>
-    <p>{"installed":
-    {"client_id":"",
-    "project_id":"",
-    "auth_uri":"https://accounts.google.com/o/oauth2/auth",
-    "token_uri":"https://oauth2.googleapis.com/token",
-    "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
-    "client_secret":"",
-    "redirect_uris":["http://localhost"]}
-}</p>
+
+```json
+    {"installed":
+        {"client_id":"",
+        "project_id":"",
+        "auth_uri":"https://accounts.google.com/o/oauth2/auth",
+        "token_uri":"https://oauth2.googleapis.com/token",
+        "auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs",
+        "client_secret":"",
+        "redirect_uris":["http://localhost"]
+        }
+    }
+```
+
 <h4>2) mycreds.txt</h4>
     <p>-> When running the code for the first time, mycreds.txt is generated after linking to a Cloud Service provider</p>
     <p>-> Afterwards, mycreds.txt is generated & reused for subsequent invokations.</p>
