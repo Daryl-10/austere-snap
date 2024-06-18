@@ -12,4 +12,3 @@ __pycache__
 mycreds.txt
 client_secrets.json
 settings.yaml
-Dockerfile
