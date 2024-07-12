@@ -8,6 +8,8 @@
 
 <h3>The above is a pre-cursor to creating a Docker image that will be executed on a regular basis using a CRON job</h3>
 
+Follow up features are explored in ["headless-count" project](https://github.com/Daryl-10/headless-count)
+
 ---
 
 <h2>On first run:</h2>
